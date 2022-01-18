@@ -1,13 +1,7 @@
-import {createStore,applyMiddleware,combineReducers} from 'redux';
-import {searchReducer} from './reducers/search';
+import {createStore,applyMiddleware} from 'redux';
+import {listReducer} from './reducers/list';
 import logger from 'redux-logger'
 
-// const rootReducer=combineReducers(
-//     {
-//         list:listReducer,
-//         sortersList:sortersListReducer
-//     }
-// )
-const store=createStore(searchReducer,applyMiddleware(logger));
+const store=createStore(listReducer,applyMiddleware(logger));
 
 export default store;
