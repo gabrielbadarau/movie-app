@@ -2,6 +2,7 @@ import React from 'react'
 import MovieList from '../../components/MovieList'
 import axios from 'axios';
 import themoviedbApiKey from '../../configs/themoviedb';
+import './HomePage.css'
 
 class HomePage extends React.Component{
 
@@ -38,18 +39,26 @@ class HomePage extends React.Component{
 
     render(){
         return (
-            <div>
-                <form
-                onSubmit={(event)=>this.submitSearch(event)}
-                >
-                    <label htmlFor="search"></label>
-                    <input
-                        type="text"
-                        id="search"
-                        onChange={(event) => this.updateSearchText(event)}
-                    />
-                    <input type="submit" value="Search" />
-                </form>
+            <div className="container-fluid container-min-max-width mt-3">
+                <div className="text-center"> 
+                    <form
+                    className='searchForm'
+                    onSubmit={(event)=>this.submitSearch(event)}
+                    >
+                        <label htmlFor="search"></label>
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder='Search for a movie...'
+                            onChange={(event) => this.updateSearchText(event)}
+                        />
+                        <input
+                            id="submitButton"
+                            type="submit" 
+                            value="Search" 
+                        />
+                    </form>
+                </div>
                 <MovieList list={this.state.moviesList} />
             </div>
         )
