@@ -1,19 +1,15 @@
 import React from 'react'
+import MovieItem from './MovieItem'
 
-class MovieList extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state={};
-    }
+function MovieList(props){
+    return (
+        <div>
+            {
+                props.list.map((movieData)=><MovieItem key={movieData.id} details={movieData} />)
+            }
+        </div>
+    )
     
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
 }
 
 export default MovieList

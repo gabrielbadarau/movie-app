@@ -9,7 +9,7 @@ class HomePage extends React.Component{
         super(props);
         this.state={
             searchText:"",
-            list:[]
+            moviesList:[]
         };
     }
 
@@ -19,12 +19,12 @@ class HomePage extends React.Component{
 
     fetchData(){
         let param=this.state.searchText.split(' ').join('%20')
-        let url=`https://api.themoviedb.org/3/search/movie?api_key=${themoviedbApiKey}&language=en-US&query=${param}`;
+        let url=`https://api.themoviedb.org/3/search/movie?api_key=${themoviedbApiKey}&language=en-US&query=${param}&include_adult=false`;
 
         axios.request(url)
         .then(response=>{
-            const list=response.data.results;
-            this.setState({list});
+            const moviesList=response.data.results;
+            this.setState({moviesList});
         })
         .catch(function(error){
             console.log(error)
@@ -50,7 +50,7 @@ class HomePage extends React.Component{
                     />
                     <input type="submit" value="Search" />
                 </form>
-                <MovieList />
+                <MovieList list={this.state.moviesList} />
             </div>
         )
     }
