@@ -40,7 +40,7 @@ class HomePage extends React.Component{
     render(){
         return (
             <div className="container-fluid container-min-max-width mt-3">
-                <div className="text-center"> 
+                <div className="text-center "> 
                     <form
                     className='searchForm'
                     onSubmit={(event)=>this.submitSearch(event)}
