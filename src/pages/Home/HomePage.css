@@ -1,0 +1,31 @@
+#submitButton{
+    background-color: rgb(44, 130, 75);
+    color:white;
+    border-radius: 5%;
+    text-decoration: none;
+    outline: none;
+    font-weight:5px;
+    border:3px solid white;
+}
+
+#submitButton:hover{
+    filter: brightness(110%);
+}
+
+#submitButton:active{
+    background-color: white;
+    color:rgb(44, 130, 75);
+    font-weight:5px;
+}
+
+
+#search{
+    border-radius: 3%;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+}
+
+#search:focus{
+    border: 2px solid rgb(44, 130, 75);
+}

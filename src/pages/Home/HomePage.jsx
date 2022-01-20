@@ -35,6 +35,7 @@ class HomePage extends React.Component{
     submitSearch(event){
         event.preventDefault();
         this.fetchData()
+        this.setState({searchText:""})
     }
 
     render(){
@@ -47,6 +48,7 @@ class HomePage extends React.Component{
                     >
                         <label htmlFor="search"></label>
                         <input
+                            value={this.state.searchText}
                             type="text"
                             id="search"
                             placeholder='Search for a movie...'
