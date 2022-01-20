@@ -1,18 +1,31 @@
 
 .img-card{
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 
 .card-container{
-   width: 130px;
+   width: 200px;
 }
 
 .content-container h4{
-    font-size:13px;
+    font-size:16px;
 }
 
 .content-container p{
-    font-size:11px;
+    font-size:13px;
+}
+
+.image-container{
+    position: relative;
+}
+
+#scoreCircle{
+    font-weight: bold;
+    position:absolute;
+    bottom: -13px;
+    left: 10px;
+    background-color: white;
+    border-radius: 50%;
 }
