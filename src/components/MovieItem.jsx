@@ -37,7 +37,7 @@ class MovieItem extends React.Component {
                         text={`${vote_average*10}%`}
                         styles={buildStyles({
                             strokeLinecap: 'butt',
-                            textSize: '36px',
+                            textSize: '30px',
                             pathTransition:'none',
                             pathColor: `rgb(44, 130, 75)`,
                             textColor: '#050505',
