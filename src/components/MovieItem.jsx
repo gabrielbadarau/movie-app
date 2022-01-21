@@ -2,6 +2,7 @@ import React from 'react'
 import './MovieItem.css'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import lozad from 'lozad'
 
 class MovieItem extends React.Component {
 
@@ -24,11 +25,12 @@ class MovieItem extends React.Component {
         const {title,overview,vote_average,poster_path,release_date} = this.props.details;
         let srcImage=poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : './images/no_image.png';
         let releaseDate=release_date ? this.formatDate(release_date) : 'No Release Date'
-        console.log(vote_average)
+        const observer = lozad(); 
+        observer.observe();
         return (
             <div className='card-container m-3 d-flex flex-column'>
                 <div className='image-container'>
-                    <img className="img-card" src={srcImage} alt="Something went wrong" />
+                    <img className="lozad img-card" src={srcImage} alt="Something went wrong" />
                     <div id="scoreCircle" style={{ width: 35, height: 35}}>
                     <CircularProgressbar 
                         value={vote_average*10} 
