@@ -3,6 +3,8 @@ import MovieList from '../../components/MovieList'
 import axios from 'axios';
 import themoviedbApiKey from '../../configs/themoviedb';
 import './HomePage.css'
+import Layout from '../../components/Layout';
+import { ReactComponent as Search } from '../../assets/icons/search.svg';
 
 class HomePage extends React.Component{
 
@@ -40,29 +42,33 @@ class HomePage extends React.Component{
 
     render(){
         return (
-            <div className="container-fluid container-min-max-width mt-3">
-                <div className="text-center "> 
-                    <form
-                    className='searchForm'
-                    onSubmit={(event)=>this.submitSearch(event)}
-                    >
-                        <label htmlFor="search"></label>
-                        <input
-                            value={this.state.searchText}
-                            type="text"
-                            id="search"
-                            placeholder='Search for a movie...'
-                            onChange={(event) => this.updateSearchText(event)}
-                        />
-                        <input
-                            id="submitButton"
-                            type="submit" 
-                            value="Search" 
-                        />
-                    </form>
+            <Layout>
+                <div className="container-fluid container-min-max-width mt-3">
+                    <div className="text-center "> 
+                        <form
+                        className='searchForm'
+                        onSubmit={(event)=>this.submitSearch(event)}
+                        >
+                            <label htmlFor="search"></label>
+                            <input
+                                value={this.state.searchText}
+                                type="text"
+                                id="search"
+                                placeholder='Search for a movie...'
+                                onChange={(event) => this.updateSearchText(event)}
+                            />
+                            <label>
+                                <input
+                                    id="submitButton"
+                                    type="submit" 
+                                />
+                                <Search style={{marginLeft:"2px"}} className='search-svg' />
+                            </label>
+                        </form>
+                    </div>
+                    <MovieList list={this.state.moviesList} />
                 </div>
-                <MovieList list={this.state.moviesList} />
-            </div>
+            </Layout>
         )
     }
 }

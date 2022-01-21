@@ -6,11 +6,12 @@
     outline: none;
     font-weight:5px;
     border:3px solid white;
+    display: none;
 }
 
 #submitButton:hover{
     filter: brightness(110%);
-}
+} 
 
 #submitButton:active{
     background-color: white;
@@ -28,4 +29,19 @@
 
 #search:focus{
     border: 2px solid rgb(44, 130, 75);
+}
+
+.search-svg{
+    width: 27px;
+    height: 27px;
+    
+}
+.search-svg:hover{
+    fill:rgb(44, 124, 73);
+}
+
+.search-svg:active{
+    transform: scale(0.90);
+    top: 3px;
+    fill: rgb(22, 70, 40);
 }
