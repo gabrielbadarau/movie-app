@@ -11,17 +11,12 @@ class HomePage extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            searchText:"",
             moviesList:[]
         };
     }
 
-    updateSearchText(event){
-        this.setState({searchText:event.target.value})
-    }
-
     fetchData(){
-        let param=this.state.searchText.split(' ').join('%20')
+        let param=document.getElementById('search').value.split(' ').join('%20')
         let url=`https://api.themoviedb.org/3/search/movie?api_key=${themoviedbApiKey}&language=en-US&query=${param}&include_adult=false`;
 
         axios.request(url)
@@ -37,7 +32,7 @@ class HomePage extends React.Component{
     submitSearch(event){
         event.preventDefault();
         this.fetchData()
-        this.setState({searchText:""})
+        document.getElementById('search').value=""
     }
 
     render(){
@@ -51,11 +46,11 @@ class HomePage extends React.Component{
                         >
                             <label htmlFor="search"></label>
                             <input
-                                value={this.state.searchText}
+                                // value={this.state.searchText}
                                 type="text"
                                 id="search"
                                 placeholder='Search for a movie...'
-                                onChange={(event) => this.updateSearchText(event)}
+                                // onChange={(event) => this.updateSearchText(event)}
                             />
                             <label>
                                 <input
