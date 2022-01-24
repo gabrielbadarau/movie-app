@@ -1,3 +1,20 @@
 .header-height{
-    height: 80px;
+    height: 60px;
+}
+
+.border-bottom img{
+    width: 150px;
+    margin-top: 28px;
+    height: auto;
+}
+
+.header-text{
+    text-decoration: none;
+    color: black;
+    font-size: 26px;
+    font-weight: 550;
+}
+.header-text:hover{
+    color:black;
+    transform: scale(1.2)
 }

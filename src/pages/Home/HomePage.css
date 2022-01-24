@@ -21,10 +21,11 @@
 
 
 #search{
-    border-radius: 3%;
+    border-radius: 0.25rem;
     border: 2px solid #ccc;
     outline: none;
     transition: 0.2s;
+    margin-top: 20px;
 }
 
 #search:focus{
@@ -34,7 +35,6 @@
 .search-svg{
     width: 27px;
     height: 27px;
-    
 }
 .search-svg:hover{
     fill:rgb(44, 124, 73);

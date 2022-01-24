@@ -53,18 +53,16 @@ class HomePage extends React.Component{
                         >
                             <label htmlFor="search"></label>
                             <input
-                                // value={this.state.searchText}
                                 type="text"
                                 id="search"
                                 placeholder='Search for a movie...'
-                                // onChange={(event) => this.updateSearchText(event)}
                             />
                             <label>
                                 <input
                                     id="submitButton"
                                     type="submit" 
                                 />
-                                <Search style={{marginLeft:"2px"}} className='search-svg' />
+                                <Search style={{marginLeft:"2px",marginBottom:"5px"}} className='search-svg' />
                             </label>
                         </form>
                     </div>

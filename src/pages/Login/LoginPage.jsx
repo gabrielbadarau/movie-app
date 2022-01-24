@@ -1,7 +1,12 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../../configs/firebase';
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { ReactComponent as Google } from '../../assets/icons/google.svg';
+import { ReactComponent as Facebook } from '../../assets/icons/facebook.svg';
+import './LoginPage.css'
+import Logo from '../../assets/images/logo.png';
 
 initializeApp(firebaseConfig);
 
@@ -10,21 +15,10 @@ function signInWithGoogle(){
     const auth = getAuth(); 
     signInWithPopup(auth, provider)
     .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
         const user = result.user;
-        // ...
+        console.log(user)
     }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.log(error.message)
     });
 }
 
@@ -33,32 +27,30 @@ function signInWithFacebook(){
     const auth = getAuth();
     signInWithPopup(auth, provider)
     .then((result) => {
-    // The signed-in user info.
-    const user = result.user;
-
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const credential = FacebookAuthProvider.credentialFromResult(result);
-    const accessToken = credential.accessToken;
-
-    // ...
-     })
-     .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = FacebookAuthProvider.credentialFromError(error);
-
-    // ...
+        const user = result.user;
+        console.log(user)
+    }).catch((error) => {
+        console.log(error.message)
     });
 }
 
 function LoginPage() {
-    return <div>
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
-        <button onClick={signInWithFacebook}>Sign In With Facebook</button>
+    return <div className='login-page'>
+        <Link to='/'>
+            <img src={Logo} alt="logo" className="mt-2 mb-5"/>
+        </Link>
+        <p>Choose the provider with which you want to login:</p>
+        
+        <div className='d-flex flex-column'>
+            <button onClick={signInWithGoogle}>
+                <Google className="mr-3"/>
+                <span className='text-nowrap'>Login with Google</span>
+            </button>
+            <button onClick={signInWithFacebook}>
+                <Facebook className="mr-3"/>
+                <span className='text-nowrap'>Login with Facebook</span>
+            </button>
+        </div>
     </div>
 }
 
