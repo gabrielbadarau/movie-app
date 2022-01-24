@@ -11,7 +11,8 @@ class HomePage extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            moviesList:[]
+            moviesList:[],
+            checkEmptyList:false
         };
     }
 
@@ -22,7 +23,13 @@ class HomePage extends React.Component{
         axios.request(url)
         .then(response=>{
             const moviesList=response.data.results;
-            this.setState({moviesList});
+            this.setState({moviesList,checkEmptyList:true});
+            if(response.data.results.length){
+                this.setState({checkEmptyList:false})
+            }
+            else(
+                this.setState({checkEmptyList:true})
+            )
         })
         .catch(function(error){
             console.log(error)
@@ -62,6 +69,7 @@ class HomePage extends React.Component{
                         </form>
                     </div>
                     <MovieList list={this.state.moviesList} />
+                    {this.state.checkEmptyList===true ? <h1>Nothing found</h1>  : null}
                 </div>
             </Layout>
         )
