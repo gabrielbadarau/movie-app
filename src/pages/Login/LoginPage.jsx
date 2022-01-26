@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React,{useEffect,useRef} from 'react';
+import {Link,useNavigate} from "react-router-dom";
 import { ReactComponent as Google } from '../../assets/icons/google.svg';
 import { ReactComponent as Facebook } from '../../assets/icons/facebook.svg';
 import './LoginPage.css'
@@ -9,6 +9,18 @@ import {loginWithGoogle,loginWithFacebook} from '../../redux/actions/signInMetho
 
 
 function LoginPage(props) {
+
+    const navigate = useNavigate();
+    const isInitialMount = useRef(true);
+    useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            // it executes only when the component is updated, it is not executed the first time!
+            navigate('/');
+        }
+    });
+
     return <div className='login-page'>
         <Link to='/'>
             <img src={Logo} alt="logo" className="mt-2 mb-5"/>
@@ -35,4 +47,10 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(null,mapDispatchToProps)(LoginPage);
+function mapStateToProps(state){
+    return {
+        user:state.user
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);

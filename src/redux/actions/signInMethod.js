@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../../configs/firebase';
-import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut } from "firebase/auth";
 initializeApp(firebaseConfig);
 
 function startLoading(){
@@ -48,5 +48,16 @@ export function loginWithFacebook(){
         }).catch((error) => {
             dispatch(updateError(error.message))
         });
+    }
+}
+
+export function logout(){
+    return (dispatch)=>{
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            dispatch(updateUserName(""));
+          }).catch((error) => {
+            dispatch(updateError(error.message))
+          });          
     }
 }
