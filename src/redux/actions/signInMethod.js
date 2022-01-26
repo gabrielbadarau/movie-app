@@ -30,7 +30,7 @@ export function loginWithGoogle(){
         dispatch(startLoading());
         signInWithPopup(auth, provider)
         .then((result) => {
-            dispatch(updateUserName(result.user.displayName));
+            dispatch(updateUserName(result.user));
         }).catch((error) => {
             dispatch(updateError(error.message))
         });
@@ -44,7 +44,7 @@ export function loginWithFacebook(){
         dispatch(startLoading());
         signInWithPopup(auth, provider)
         .then((result) => {
-            dispatch(updateUserName(result.user.displayName));
+            dispatch(updateUserName(result.user));
         }).catch((error) => {
             dispatch(updateError(error.message))
         });

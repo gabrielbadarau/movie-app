@@ -6,6 +6,8 @@ import './HomePage.css'
 import Layout from '../../components/Layout';
 import { ReactComponent as Search } from '../../assets/icons/search.svg';
 
+import ScrollButton from '../../components/ScrollButton'
+
 class HomePage extends React.Component{
 
     constructor(props){
@@ -69,6 +71,7 @@ class HomePage extends React.Component{
                     <MovieList list={this.state.moviesList} />
                     {this.state.checkEmptyList===true ? <h1>Nothing found</h1>  : null}
                 </div>
+                <ScrollButton />
             </Layout>
         )
     }

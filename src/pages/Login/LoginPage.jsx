@@ -49,7 +49,8 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
     return {
-        user:state.user
+        user:state.user.displayName,
+        email:state.user.email
     }
 }
 
