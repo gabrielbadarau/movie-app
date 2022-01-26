@@ -1,7 +1,8 @@
 import {createStore,applyMiddleware} from 'redux';
-import {listReducer} from './reducers/list';
+import {signInMethodReducer} from './reducers/signInMethod';
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
-const store=createStore(listReducer,applyMiddleware(logger));
+const store=createStore(signInMethodReducer,applyMiddleware(thunk,logger));
 
 export default store;
