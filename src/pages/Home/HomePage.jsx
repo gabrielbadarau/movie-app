@@ -5,7 +5,6 @@ import themoviedbApiKey from '../../configs/themoviedb';
 import './HomePage.css'
 import Layout from '../../components/Layout';
 import { ReactComponent as Search } from '../../assets/icons/search.svg';
-
 import ScrollButton from '../../components/ScrollButton'
 
 class HomePage extends React.Component{
@@ -25,12 +24,11 @@ class HomePage extends React.Component{
         axios.request(url)
         .then(response=>{
             const moviesList=response.data.results;
-            this.setState({moviesList,checkEmptyList:true});
-            if(response.data.results.length){
-                this.setState({checkEmptyList:false})
+            if(moviesList.length){
+                this.setState({moviesList,checkEmptyList:false})
             }
             else(
-                this.setState({checkEmptyList:true})
+                this.setState({moviesList,checkEmptyList:true})
             )
         })
         .catch(function(error){
@@ -45,6 +43,7 @@ class HomePage extends React.Component{
     }
 
     render(){
+        console.log(this.state.moviesList)
         return (
             <Layout>
                 <div className="container-fluid container-min-max-width mt-3">
