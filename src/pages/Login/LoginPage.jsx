@@ -3,7 +3,7 @@ import {Link,useNavigate} from "react-router-dom";
 import { ReactComponent as Google } from '../../assets/icons/google.svg';
 import { ReactComponent as Facebook } from '../../assets/icons/facebook.svg';
 import './LoginPage.css'
-import Logo from '../../assets/images/logo.png';
+// import Logo from '../../assets/images/logo.png';
 import {connect} from 'react-redux'
 import {loginWithGoogle,loginWithFacebook} from '../../redux/actions/signInMethod'
 
@@ -22,9 +22,9 @@ function LoginPage(props) {
     });
 
     return <div className='login-page'>
-        <Link to='/'>
+        {/* <Link to='/'>
             <img src={Logo} alt="logo" className="mt-2 mb-5"/>
-        </Link>
+        </Link> */}
         <p>Choose the provider with which you want to login:</p>
         
         <div className='d-flex flex-column'>
