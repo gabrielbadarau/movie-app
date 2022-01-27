@@ -1,0 +1,12 @@
+.img-movie{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.img-movie-container{
+    min-width: 330px;
+    width: 330px;
+    margin-right: 15px;
+}

@@ -23,14 +23,18 @@ class MovieItem extends React.Component {
     }
 
     render() {
-        const {title,overview,vote_average,poster_path,release_date} = this.props.details;
+        const {title,vote_average,poster_path,release_date} = this.props.details;
         let srcImage=poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : './images/no_image.png';
         let releaseDate=release_date ? this.formatDate(release_date) : 'No Release Date'
         const observer = lozad(); 
         observer.observe();
         return (
             <div className='card-container m-3 d-flex flex-column'>
-                <Link style={{textDecoration:'none',color:'black'}} to={`${title}`}>
+                <Link 
+                    style={{textDecoration:'none',color:'black'}} 
+                    to={`${title}`}
+                    state={this.props.details}
+                >
                     <div className='image-container'>
                         <img className="lozad img-card" src={srcImage} alt="Something went wrong" />
                         <div id="scoreCircle" style={{ width: 35, height: 35}}>

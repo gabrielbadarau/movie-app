@@ -9,7 +9,6 @@ import { Outlet} from "react-router-dom";
 
 function SearchPage() {
     const {text,name}=useParams();
-    console.log(name)
     const [state,setState]=useState({
         moviesList:[],
         checkEmptyList:false
