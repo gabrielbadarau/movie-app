@@ -38,7 +38,7 @@ function SearchPage() {
 
 
     return (
-        <div className='container-fluid container-min-max-width mt-3'>
+        <div className='container-fluid justify-content-center d-flex container-min-max-width mt-3'>
             {!name ? <MovieList list={state.moviesList} /> :<Outlet/>}
             {state.checkEmptyList===true ? <h1>Nothing found</h1>  : null}
             <ScrollButton />
