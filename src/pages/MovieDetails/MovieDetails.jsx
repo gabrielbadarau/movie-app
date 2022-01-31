@@ -4,6 +4,8 @@ import './MovieDetails.css'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { ReactComponent as RedHeart } from '../../assets/icons/heart-solid.svg';
+import {connect} from 'react-redux'
+import { addToWatchList, removeFromWatchList } from '../../redux/actions/list';
 
 // useLocation for retrieveing state from the Link component
 function formatDate(date){
@@ -12,15 +14,44 @@ function formatDate(date){
   return newDate;
 }
 
-function handleAddToFavoriteButton(){
-  document.getElementById('heart').classList.toggle("removeFavoriteButton")
-  // document.getElementById('heart').classList.add("removeFavoriteButton")
-}
-
-function MovieDetails() {
-  const {title,overview,vote_average,poster_path,release_date,popularity}=useLocation().state;
+function MovieDetails(props) {
+  const {id,title,overview,vote_average,poster_path,release_date,popularity}=useLocation().state;
+  const movie={id,title,overview,vote_average,poster_path,release_date,popularity}
   let srcImage=poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : './images/no_image.png';
   let date=release_date ? formatDate(release_date) : null
+
+  function checkElementOfArray(name){
+    return name.title===title;
+  }
+  
+  let valueButton;
+  function checkArrayForTitle(){
+    if(props.watchList.find(checkElementOfArray))
+    {
+      valueButton="Remove from my watch list";
+    }
+    else{
+      valueButton="Add to my watch list";
+    }
+  }
+  
+  function handleFavoriteButton(){
+    document.getElementById('heart').classList.toggle("removeFavoriteButton")
+    // document.getElementById('heart').classList.add("removeFavoriteButton")
+  }
+
+  function handleWatchListButton(movie){
+    if(valueButton==="Add to my watch list")
+    {
+      props.addToWatchList(movie)
+    }
+    else{
+      props.removeFromWatchList(movie)
+    }
+  }
+
+  checkArrayForTitle();
+
   return(
     <div className='container p-0 mt-5 mb-3 row justify-content-center'>
       <div className='img-movie-container col-12 col-md-5 col-lg-4'>
@@ -50,11 +81,15 @@ function MovieDetails() {
             />
           </div>
           <div className='d-flex flex-column text-center'>
-            <button className='addListButton'>Add to my watch list</button>
+            <button 
+              className='listButton'
+              onClick={()=>handleWatchListButton(movie)}
+            >
+              {valueButton}</button>
             <button 
             id="heart"
             className='addFavoriteButton'
-            onClick={()=>handleAddToFavoriteButton()}
+            onClick={()=>handleFavoriteButton()}
             >
               <RedHeart style={{width:'35px'}}/>
             </button>
@@ -65,4 +100,17 @@ function MovieDetails() {
   )
 }
 
-export default MovieDetails;
+function mapDispatchToProps(dispatch){
+  return {
+    addToWatchList:(movie)=>dispatch(addToWatchList(movie)),
+    removeFromWatchList: (movie)=>dispatch(removeFromWatchList(movie))
+  }
+}
+
+function mapStateToProps(state){
+  return {
+    watchList:state.list.watchList
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MovieDetails);

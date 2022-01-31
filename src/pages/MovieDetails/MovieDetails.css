@@ -5,7 +5,7 @@
     border-radius: 5%;
 }
 
-.addListButton {
+.listButton {
     margin-left:35px;
     background-color: rgb(44, 130, 75);
     border: 1px solid rgb(44, 130, 75);
@@ -28,12 +28,12 @@
     touch-action: manipulation;
 }
 
-.addListButton:hover {
+.listButton:hover {
   box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
 
-.addListButton:active{
+.listButton:active{
     background-color: #1f402b;
 }
 

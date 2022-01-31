@@ -7,6 +7,7 @@ import MovieDetails from './pages/MovieDetails/MovieDetails'
 import SearchPage from './pages/SearchPage/SearchPage';
 import './App.css';
 import Layout from './components/Layout';
+import WatchList from './pages/WatchList/WatchList';
 
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />}/>
           <Route path="search/:text" element={<SearchPage/>} >
+            <Route path=":name" element={<MovieDetails/>} />
+          </Route>
+          <Route path="my-watch-list" element={<WatchList/>} >
             <Route path=":name" element={<MovieDetails/>} />
           </Route>
           <Route path="login" element={<LoginPage/>} />

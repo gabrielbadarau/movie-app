@@ -1,5 +1,5 @@
 import React,{useEffect,useRef} from 'react';
-import {Link,useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { ReactComponent as Google } from '../../assets/icons/google.svg';
 import { ReactComponent as Facebook } from '../../assets/icons/facebook.svg';
 import './LoginPage.css'
@@ -25,7 +25,7 @@ function LoginPage(props) {
         {/* <Link to='/'>
             <img src={Logo} alt="logo" className="mt-2 mb-5"/>
         </Link> */}
-        <p>Choose the provider with which you want to login:</p>
+        <p className='mt-5'>Choose the provider with which you want to login:</p>
         
         <div className='d-flex flex-column'>
             <button onClick={props.signInWithGoogle}>
@@ -49,8 +49,8 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
     return {
-        user:state.user.displayName,
-        email:state.user.email
+        user:state.signInMethod.user.displayName,
+        email:state.signInMethod.user.email
     }
 }
 
