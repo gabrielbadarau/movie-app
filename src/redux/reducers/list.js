@@ -9,9 +9,7 @@ export function listReducer(state=initialState,action){
                 watchList:[...state.watchList,action.payload]
             })
         case 'REMOVE_FROM_WATCH_LIST':
-            const newArray=state.watchList.filter((item)=>{
-                return item.id!==action.payload.id
-            });
+            const newArray=state.watchList.filter((item)=>item.id!==action.payload.id);
             return Object.assign({},{
                 watchList:newArray
             })
