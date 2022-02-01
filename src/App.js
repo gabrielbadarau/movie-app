@@ -9,6 +9,7 @@ import './App.css';
 import Layout from './components/Layout';
 import WatchList from './pages/WatchList/WatchList';
 import FavoritePage from './pages/FavoritePage/FavoritePage';
+import AboutPage from './pages/AboutPage/AboutPage';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path=":name" element={<MovieDetails/>} />
           </Route>
           <Route path="login" element={<LoginPage/>} />
+          <Route path="/about" element={<AboutPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
