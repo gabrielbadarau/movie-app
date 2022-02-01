@@ -2,7 +2,7 @@
     height: 60px;
 }
 
-.border-bottom img{
+.header-height img{
     width: 150px;
     margin-top: 28px;
     height: auto;
@@ -15,7 +15,7 @@
     font-weight: 550;
 }
 .header-text:hover{
-    color:rgba(0, 0, 0, 0.781);
+    color:rgb(44, 124, 73);
 }
 
 .logoutIcon{
@@ -27,3 +27,10 @@
     cursor: pointer;
     color: rgb(0, 0, 0);
 }
+
+@media screen and (max-width: 600px) {
+    .login-name{
+        display: none;
+    }
+}
+

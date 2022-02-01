@@ -8,6 +8,7 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import './App.css';
 import Layout from './components/Layout';
 import WatchList from './pages/WatchList/WatchList';
+import FavoritePage from './pages/FavoritePage/FavoritePage';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
             <Route path=":name" element={<MovieDetails/>} />
           </Route>
           <Route path="my-watch-list" element={<WatchList/>} >
+            <Route path=":name" element={<MovieDetails/>} />
+          </Route>
+          <Route path="my-favorite-list" element={<FavoritePage/>} >
             <Route path=":name" element={<MovieDetails/>} />
           </Route>
           <Route path="login" element={<LoginPage/>} />

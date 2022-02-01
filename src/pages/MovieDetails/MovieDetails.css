@@ -47,7 +47,3 @@
 .addFavoriteButton:hover{
     transform: translateY(-2px);
 }
-
-.removeFavoriteButton{
-    fill: red;
-}

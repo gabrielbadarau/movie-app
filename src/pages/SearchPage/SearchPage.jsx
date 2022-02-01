@@ -40,7 +40,7 @@ function SearchPage() {
     return (
         <div className='container-fluid justify-content-center d-flex container-min-max-width mt-3'>
             {!name ? <MovieList list={state.moviesList} /> :<Outlet/>}
-            {state.checkEmptyList===true ? <h1>Nothing found</h1>  : null}
+            {state.checkEmptyList===true ? <h2 className='mt-5'>Nothing found</h2>  : null}
             <ScrollButton />
         </div>
     )

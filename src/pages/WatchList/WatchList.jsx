@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './WatchList.css'
 import {connect} from 'react-redux'
 import MovieList from '../../components/MovieList';
