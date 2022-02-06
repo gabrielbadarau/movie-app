@@ -1,7 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import firebaseConfig from '../../configs/firebase';
-import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut } from "firebase/auth";
-initializeApp(firebaseConfig);
+
+import {signInWithGoogle,signInWithFacebook,signOutFunction} from '../../apis/firebase';
 
 function startLoading(){
     return{
@@ -25,10 +23,8 @@ function updateError(payload){
 
 export function loginWithGoogle(){ 
     return dispatch=>{
-        const provider = new GoogleAuthProvider();
-        const auth = getAuth(); 
         dispatch(startLoading());
-        signInWithPopup(auth, provider)
+        signInWithGoogle()
         .then((result) => {
             dispatch(updateUserName(result.user));
         }).catch((error) => {
@@ -39,10 +35,8 @@ export function loginWithGoogle(){
 
 export function loginWithFacebook(){
     return (dispatch)=>{
-        const provider = new FacebookAuthProvider();
-        const auth = getAuth();
         dispatch(startLoading());
-        signInWithPopup(auth, provider)
+        signInWithFacebook()
         .then((result) => {
             dispatch(updateUserName(result.user));
         }).catch((error) => {
@@ -53,8 +47,7 @@ export function loginWithFacebook(){
 
 export function logout(){
     return (dispatch)=>{
-        const auth = getAuth();
-        signOut(auth).then(() => {
+        signOutFunction().then(() => {
             dispatch(updateUserName(""));
           }).catch((error) => {
             dispatch(updateError(error.message))

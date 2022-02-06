@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import './MovieDetails.css'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -6,6 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { ReactComponent as RedHeart } from '../../assets/icons/heart-solid.svg';
 import {connect} from 'react-redux'
 import {addToWatchList,removeFromWatchList,addToFavorite,removeFromFavorite} from '../../redux/actions/list';
+import {writeUsers} from '../../apis/firebase'
 
 // useLocation for retrieveing state from the Link component
 function formatDate(date){
@@ -15,6 +16,17 @@ function formatDate(date){
 }
 
 function MovieDetails(props) {
+
+  useEffect(() => {
+    let docData={
+      watchList:props.watchList,
+      favoriteList:props.favoriteList
+    }
+    if(props.userEmail!==undefined){
+      writeUsers(props.userEmail,docData)
+    }
+  });
+
   const {id,title,overview,vote_average,poster_path,release_date,popularity}=useLocation().state;
   const movie={id,title,overview,vote_average,poster_path,release_date,popularity}
   let srcImage=poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : './images/no_image.png';
@@ -56,8 +68,6 @@ function MovieDetails(props) {
     else{
       props.removeFromFavorite(movie)
     }
-    // document.getElementById('heart').classList.toggle("removeFavoriteButton")
-    // document.getElementById('heart').classList.add("removeFavoriteButton")
   }
 
   function handleWatchListButton(){
@@ -132,6 +142,7 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
   return {
+    userEmail:state.signInMethod.user.email,
     watchList:state.list.watchList,
     favoriteList:state.list.favoriteList
   }

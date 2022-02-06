@@ -11,7 +11,6 @@ import WatchList from './pages/WatchList/WatchList';
 import FavoritePage from './pages/FavoritePage/FavoritePage';
 import AboutPage from './pages/AboutPage/AboutPage';
 
-
 function App() {
   return (
     <div className="App">

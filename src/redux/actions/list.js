@@ -25,3 +25,17 @@ export function removeFromFavorite(payload){
         payload
     }
 }
+
+export function addWatchList(payload){
+    return {
+        type:'ADD_WATCH_LIST',
+        payload
+    }
+}
+
+export function addFavoriteList(payload){
+    return {
+        type:'ADD_FAVORITE_LIST',
+        payload
+    }
+}

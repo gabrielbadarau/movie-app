@@ -1,12 +1,43 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Header.css'
 import {Link} from "react-router-dom";
 import Logo from '../assets/images/logo.png';
 import { connect } from 'react-redux';
 import { ReactComponent as Logout } from '../assets/icons/logout.svg';
 import {logout} from '../redux/actions/signInMethod';
+import {addFavoriteList,addWatchList} from '../redux/actions/list'
+import {writeUsers,checkUser} from '../apis/firebase'
 
 function Header(props){
+    console.log("i run")
+
+    useEffect(() => {
+        checkUser(props.userEmail)
+        .then((value)=>{
+            if(value.exists()){
+                // if user exists, populate watchList and favoriteList from firestore
+               props.addWatchList(value.data().watchList);
+               props.addFavoriteList(value.data().favoriteList);
+            }
+            else if(props.userEmail!==undefined){
+                // if user doesn't exist, create user
+                let docData={
+                    watchList: [],
+                    favoriteList:[]
+                }
+                props.addWatchList([]);
+                props.addFavoriteList([]);
+                writeUsers(props.userEmail,docData)
+            }
+            else{
+                props.addWatchList([]);
+                props.addFavoriteList([]);
+            }
+        })
+        .catch((error)=>{
+            console.log("You got the error ",error)
+        })
+    });
 
     return(
         <header className='border-bottom header-height container-fluid d-flex justify-content-between align-items-center text-center'>
@@ -46,13 +77,16 @@ function Header(props){
 
 function mapStateToProps(state){
     return {
-        user:state.signInMethod.user.displayName
+        userEmail:state.signInMethod.user.email,
+        user:state.signInMethod.user.displayName,
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        logout: ()=>dispatch(logout())
+        logout: ()=>dispatch(logout()),
+        addWatchList: (list)=>dispatch(addWatchList(list)),
+        addFavoriteList: (list)=>dispatch(addFavoriteList(list))
     }
 }
 

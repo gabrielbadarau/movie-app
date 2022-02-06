@@ -27,6 +27,16 @@ export function listReducer(state=initialState,action){
                 ...state,
                 favoriteList:newArray2
             })
+        case 'ADD_WATCH_LIST':
+            return Object.assign({},{
+                ...state,
+               watchList:action.payload
+            })
+        case 'ADD_FAVORITE_LIST':
+            return Object.assign({},{
+                ...state,
+                favoriteList:action.payload
+            })
         default:
             return state;
     }
