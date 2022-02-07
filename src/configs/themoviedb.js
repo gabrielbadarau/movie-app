@@ -1,3 +1,3 @@
-const themoviedbApiKey = "6ecd2dde589acda1a901d3d3a16f0160";
+const themoviedbApiKey = process.env.API_KEY;
 
 export default themoviedbApiKey;
