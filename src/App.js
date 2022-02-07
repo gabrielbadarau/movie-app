@@ -28,8 +28,8 @@ function App() {
           </Route>
           <Route path="login" element={<LoginPage/>} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

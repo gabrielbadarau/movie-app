@@ -43,7 +43,7 @@ function Header(props){
         <header className='border-bottom header-height container-fluid d-flex justify-content-between align-items-center text-center'>
             <div className=''>
                 <Link to='/'>
-                    <img src={Logo} alt="logo" className=""/>
+                    <img src={Logo} alt="logo"/>
                 </Link>
             </div>
             <div className='d-flex flex-row flex-nowrap align-items-center'>

@@ -36,3 +36,14 @@
     }
 }
 
+@media (max-width:510px) { 
+    .header-text{
+        font-size: 15px;
+    }
+    .header-height img{
+        width: 100px;
+        margin-top:10px;
+        height: auto;
+    }
+}
+
