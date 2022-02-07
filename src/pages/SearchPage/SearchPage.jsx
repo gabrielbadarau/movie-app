@@ -14,8 +14,6 @@ function SearchPage() {
         checkEmptyList:false
     })
 
-    console.log(themoviedbApiKey)
-
     function fetchData(text){
         let url=`https://api.themoviedb.org/3/search/movie?api_key=${themoviedbApiKey}&language=en-US&query=${text}&include_adult=false`;
 

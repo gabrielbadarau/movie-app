@@ -8,6 +8,7 @@ const rootReducer=combineReducers({
     list:listReducer,
     signInMethod:signInMethodReducer
 })
-const store=createStore(rootReducer,applyMiddleware(thunk,logger));
+// removed logger middleware
+const store=createStore(rootReducer,applyMiddleware(thunk));
 
 export default store;
