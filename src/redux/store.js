@@ -1,7 +1,7 @@
 import {createStore,combineReducers ,applyMiddleware} from 'redux';
 import {signInMethodReducer} from './reducers/signInMethod';
 import {listReducer} from './reducers/list'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 const rootReducer=combineReducers({

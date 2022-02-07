@@ -9,8 +9,6 @@ import {addFavoriteList,addWatchList} from '../redux/actions/list'
 import {writeUsers,checkUser} from '../apis/firebase'
 
 function Header(props){
-    console.log("i run")
-
     useEffect(() => {
         checkUser(props.userEmail)
         .then((value)=>{
