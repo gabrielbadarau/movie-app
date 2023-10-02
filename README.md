@@ -2,12 +2,6 @@
 
 In order for this project to work I used node v16.13.2 and npm v.8.1.3
 
-## Demo
-
-You can check my project here:
-
-https://gabrielbadarau-movie-app.herokuapp.com/ (it's responsive, looks good on phone too)
-
 ## Functionalities
 
 - Dynamic Routing
